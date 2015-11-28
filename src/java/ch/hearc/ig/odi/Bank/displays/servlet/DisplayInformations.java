@@ -7,6 +7,7 @@ package ch.hearc.ig.odi.Bank.displays.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,6 +42,20 @@ public class DisplayInformations extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet DisplayInformations</h1>");
+            
+            // exemple de paramètre dans URL : DisplayInformations?name=etienne
+            if (request.getParameter("name") != null) {
+                out.println("Nom saisi en paramètre : " + request.getParameter("name")+"<br />");         
+            } else {
+                out.println("Il n'y a pas de nom saisi en paramètre<br />");
+            }
+            
+            out.println("<br />Informations de session<br /><br />");
+            out.println("ID : " + request.getSession().getId());
+            out.println("<br />");
+            out.println("Creation date time : " + new Date(request.getSession().getCreationTime()));
+            out.println("<br />");
+            out.println("Servlet last acces time : " + request.getSession().getLastAccessedTime());
             out.println("</body>");
             out.println("</html>");
         }
