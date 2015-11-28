@@ -43,7 +43,7 @@ public class AskNameToStoreToSession extends HttpServlet {
             out.println("<h1>Servlet AskNameToStoreToSession</h1>");
             out.println("<form method=\"POST\" action=\"DisplayInformations\">");
             out.println("<p>Veuillez saisir votre prénom : </p>");
-            out.println("<input type=\"text\" name=\"name\" />");
+            
             request.getSession().setAttribute("name", name);
             out.println("<input type=\"submit\" value=\"Submit\">");
             out.println("</form>");

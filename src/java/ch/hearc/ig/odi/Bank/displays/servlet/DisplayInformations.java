@@ -44,12 +44,15 @@ public class DisplayInformations extends HttpServlet {
             out.println("<h1>Servlet DisplayInformations</h1>");
             
             // exemple de paramètre dans URL : DisplayInformations?name=etienne
-            if (request.getParameter("name") != null) {
-                out.println("Nom saisi en paramètre : " + request.getParameter("name")+"<br />");         
-            } else {
-                out.println("Il n'y a pas de nom saisi en paramètre<br />");
-            }
-            
+            if(request.getSession().getAttribute("name") != null){
+                out.println("Nom depuis la session "+ request.getSession().getAttribute("name")+"<br /><br />");
+            } else{
+                if (request.getParameter("name") != null) {
+                    out.println("Nom saisi en paramètre : " + request.getParameter("name")+"<br />");         
+                } else {
+                    out.println("Il n'y a pas de nom saisi en paramètre<br />");
+                }
+            }            
             out.println("<br />Informations de session<br /><br />");
             out.println("ID : " + request.getSession().getId());
             out.println("<br />");
