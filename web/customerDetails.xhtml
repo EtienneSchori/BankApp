@@ -31,8 +31,8 @@
             <h:outputText value="#{resrc['CustomerDetailsEmpty']}" rendered="#{empty DetailsBean.customerEdit.accounts}" />
         </h:form>
         <h:form>
-            <h:outputText value="#{resrc['CustomerDetailsEmpty']}" rendered="#{empty customerDetailsBean.customerEdit.accounts}" />
-            <h:dataTable id="accountsList" value="#{customerDetailsBean.customerEdit.accounts}" var="account" rendered="#{not empty customerDetailsBean.customerEdit.accounts}">
+            <h:outputText value="#{resrc['CustomerDetailsEmpty']}" rendered="#{empty DetailsBean.customerEdit.accounts}" />
+            <h:dataTable id="accountsList" value="#{DetailsBean.customerEdit.accounts}" var="account" rendered="#{not empty DetailsBean.customerEdit.accounts}">
                 <h:column>
                     <f:facet name="header">#{resrc['AccountNumber']}</f:facet>
                         #{account.number}
@@ -50,7 +50,7 @@
                         #{account.rate}
                 </h:column>
                 <h:column>
-                    <h:commandLink action="#{customerDetailsBean.accountDetails(account)}">
+                    <h:commandLink action="#{DetailsBean.accountDetails(account)}">
                         <h:outputText value="#{resrc['CustomerDetailsAccountDetails']}"/>
                     </h:commandLink>
                 </h:column>
