@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <f:view>
+        <head>
+            <title>#{resrc["CustomerDetailsTitle"]}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        </head>
+        <body>
+            <h1>#{resrc["CustomerDetailsTitle"]}</h1>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resrc['NewCustomerNumber']} :"/>
+                    <h:outputText value="#{DetailsBean.customerEdit.number}"/>
+                    <h:outputLabel value="#{resrc['NewCustomerFirstName']} :"/>
+                    <h:inputText value="#{DetailsBean.customerEdit.firstName}" required="true" requiredMessage="#{resrc['NewCustomerFirstNameError']}"/>
+                    <h:outputLabel value="#{resrc['NewCustomerLastName']} :"/>
+                    <h:inputText value="#{DetailsBean.customerEdit.lastName}" required="true" requiredMessage="#{resrc['NewCustomerLastNameError']}"/>
+                    <h:panelGroup style="text-align:center">
+                        <h:commandButton id="submit" value="#{resrc['CustomerDetailsEdit']}" />
+                    </h:panelGroup>
+                </h:panelGrid>
+            </h:form>
+        </body>
+    </f:view>
+    <f:view>
+        <h2>#{resrc["CustomerDetailsListAccount"]}</h2>
+        <h:form>
+            <h:outputText value="#{resrc['CustomerDetailsEmpty']}" rendered="#{empty DetailsBean.customerEdit.accounts}" />
+        </h:form>
+        <h:form>
+            <h:outputText value="#{resrc['CustomerDetailsEmpty']}" rendered="#{empty DetailsBean.customerEdit.accounts}" />
+            <h:dataTable id="accountsList" value="#{DetailsBean.customerEdit.accounts}" var="account" rendered="#{not empty DetailsBean.customerEdit.accounts}">
+                <h:column>
+                    <f:facet name="header">#{resrc['AccountNumber']}</f:facet>
+                        #{account.number}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{resrc['AccountName']}</f:facet>
+                        #{account.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{resrc['AccountBalance']}</f:facet>
+                        #{account.balance}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{resrc['AccountRate']}</f:facet>
+                        #{account.rate}
+                </h:column>
+                <h:column>
+                    <h:commandLink action="#{DetailsBean.accountDetails(account)}">
+                        <h:outputText value="#{resrc['CustomerDetailsAccountDetails']}"/>
+                    </h:commandLink>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        
+        <br />
+        <h:form>
+            <h:commandButton action="home" value="#{resrc['IndexBack']}" />
+        </h:form>
+    </f:view>
+</html>

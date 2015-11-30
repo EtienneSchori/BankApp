@@ -34,6 +34,6 @@ public class DetailsBean {
 
     public String accountDetails(Account account) {
         services.setAccountEdit(account);
-        return "accountDetails";
+        return "Details";
     }
 }

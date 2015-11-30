@@ -7,24 +7,121 @@
     <application>
         <locale-config>
             <default-locale>fr</default-locale>
-            <supported-locale>fr</supported-locale>
             <supported-locale>en</supported-locale>
         </locale-config>
         <resource-bundle>
-            <base-name>ch.hearc.ig.odi.Bank.Internationalitation.resources</base-name>
+            <base-name>ch.hegarc.ig.odi.Bank.Internationalitation.resources</base-name>
             <var>resrc</var>
         </resource-bundle>
     </application>
-        
+
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>customersList</from-outcome>
+            <to-view-id>/CustomersList.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/CustomersList.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    
+    <navigation-rule>
+        <from-view-id>/CustomersList.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>NewCustomer</from-outcome>
             <to-view-id>/NewCustomer.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>   
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
     </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/NewCustomer.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{CustomerBean.create}</from-action>
+            <from-outcome>Create</from-outcome>
+            <to-view-id>/NewCustomerSucces.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>customersList</from-outcome>
+            <to-view-id>/CustomersList.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>      
 
+    <navigation-rule>
+        <from-view-id>/CustomersList.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{ListBean.Details(customer)} </from-action>
+            <from-outcome>Details</from-outcome>
+            <to-view-id>/CustomerDetails.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/CustomerDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{DetailsBean.accountDetails(account)}</from-action>
+            <from-outcome>Details</from-outcome>
+            <to-view-id>/AccountDetails.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/CustomerDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>home</from-action>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/CustomerDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>customersList</from-action>
+            <to-view-id>/CustomerList.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
+    
+    <navigation-rule>
+        <from-view-id>/AccountDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>home</from-action>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/AccountDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>customerDetails</from-action>
+            <to-view-id>/CustomerDetails.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+
+    <managed-bean>
+        <managed-bean-name>ListBean</managed-bean-name>
+        <managed-bean-class>ch.hegarc.ig.odi.Bank.beans.ListBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>CustomerBean</managed-bean-name>
+        <managed-bean-class>ch.hegarc.ig.odi.Bank.beans.CustomerBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>LangBean</managed-bean-name>
+        <managed-bean-class>ch.hegarc.ig.odi.Bank.beans.LangBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>DetailsBean</managed-bean-name>
+        <managed-bean-class>ch.hegarc.ig.odi.Bank.beans.DetailsBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>AccountDetailsBean</managed-bean-name>
+        <managed-bean-class>ch.hegarc.ig.odi.Bank.beans.AccountDetailsBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

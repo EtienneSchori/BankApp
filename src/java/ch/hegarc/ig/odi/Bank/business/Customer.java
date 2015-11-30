@@ -10,48 +10,6 @@ public class Customer {
     private String firstName;
     private String lastName;
 
-    /**
-     * 
-     * @param number
-     * @param firstName
-     * @param lastName
-     */
-    public Customer(Integer number, String firstName, String lastName) {
-        this.number = number;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.accounts = new ArrayList();
-
-    }
-
-    /**
-     * 
-     * @param number
-     */
-    public Account getAccountByNumber(String number) {
-        ArrayList<Account> parcours = (ArrayList<Account>) this.accounts;
-        Account cible = null;
-        Integer i = 0;
-        while (cible == null & i < accounts.size()){
-            if (parcours.get(i).getNumber().equals(number)){
-                cible = parcours.get(i);
-            }
-        }
-        return cible;
-
-    }
-
-    /**
-     * 
-     * @param number
-     * @param name
-     * @param rate
-     */
-    public void addAccount(String number, String name, double rate) {
-        Account nouveau = new Account(number, name, rate, this);
-        this.accounts.add(nouveau);
-    }
-
     public int getNumber() {
         return this.number;
     }
@@ -96,4 +54,37 @@ public class Customer {
         this.accounts = account;
     }    
 
+    /**
+     * 
+     * @param number
+     * @param firstName
+     * @param lastName
+     */
+    public Customer(Integer number, String firstName, String lastName) {
+        this.number = number;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.accounts = new ArrayList();
+
+    }
+
+    /**
+     * 
+     * @param number
+     * 
+     * Permet de rechercher un compte par son numéro
+     * 
+     */
+    public Account getAccountByNumber(String number) {
+        ArrayList<Account> parcours = (ArrayList<Account>) this.accounts;
+        Account cible = null;
+        Integer i = 0;
+        while (cible == null & i < accounts.size()){
+            if (parcours.get(i).getNumber().equals(number)){
+                cible = parcours.get(i);
+            }
+        }
+        return cible;
+
+    }
 }

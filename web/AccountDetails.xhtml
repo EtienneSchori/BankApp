@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <f:view>
+        <head>
+            <title>#{resrc["AccountTitle"]}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        </head>
+        <body>
+            <h1>#{resrc["AccountTitle"]}</h1>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resrc['AccountNumber']} :"/>
+                    <h:outputLabel value="#{AccountDetailsBean.accountEdit.number}"/>
+                    <h:outputLabel value="#{resrc['AccountName']} :"/>
+                    <h:outputLabel value="#{AccountDetailsBean.accountEdit.name}"/>
+                    <h:outputLabel value="#{resrc['AccountBalance']} :"/>
+                    <h:outputLabel value="#{AccountDetailsBean.accountEdit.balance}"/>
+                    <h:outputLabel value="#{resrc['AccountRate']} :"/>
+                    <h:outputLabel value="#{AccountDetailsBean.accountEdit.rate}"/>
+                </h:panelGrid>
+            </h:form>
+            <br />
+            <h:form>
+                <h:commandButton action="customerDetails" value="#{resrc['CustomerDetailsBack']}"/>
+                <br /> <br />
+                <h:commandButton action="home" value="#{resrc['IndexBack']}"/>
+            </h:form>
+        </body>
+    </f:view>
+</html>

@@ -54,6 +54,8 @@ public class Bank {
     /**
      *
      * @param number
+     * 
+     * Permet de rechercher un compte par son numéro
      */
     public Account getAccountByNumber(String number) {
         Account accountFinal = null;
@@ -70,6 +72,9 @@ public class Bank {
     /**
      *
      * @param number
+     * 
+     * Permet de rechercher un client par son numéro
+     * 
      */
     public Customer getCustomerByNumber(int number) {
         Customer customerFinal = null;
@@ -86,6 +91,9 @@ public class Bank {
      * @param number
      * @param firstName
      * @param lastName
+     * 
+     * Permet d'ajouter un client dans la bank
+     * 
      */
     public Customer addCustomer(int number, String firstName, String lastName) {
         Customer customer = new Customer(number, firstName, lastName);
@@ -99,17 +107,31 @@ public class Bank {
      * @param name
      * @param rate
      * @param customer
+     * 
+     * Permet d'ajouter un compte à un client
+     * 
      */
     public void addAccount(String number, String name, double rate, Customer customer) {
         if (customers.containsValue(customer)) {
             accounts.add(new Account(number, name, rate, customer));
         }
     }
-
+    /**
+     * 
+     * Permet de retourner la liste des clients de la bank
+     * 
+     */
     public Map<Integer, Customer> getCustomers() {
         return this.customers;
     }
 
+    /**
+     * 
+     * @param customer
+     * 
+     * Permet de retourner la liste des comptes pour un client
+     * 
+     */
     public Collection<Account> getAccountsByCustomer(Customer customer) {
         Collection<Account> accountsByCustomer = new ArrayList<>();
         for (Account account : accounts) {
