@@ -3,89 +3,97 @@ package ch.hegarc.ig.odi.Bank.business;
 import java.util.*;
 
 public class Customer {
+    
+    Collection<Account> accounts;
 
-	Collection<Account> account;
-	private int number;
-	private String firstName;
-	private String lastName;
+    private int number;
+    private String firstName;
+    private String lastName;
 
-	/**
-	 * 
-	 * @param number
-	 * @param firstName
-	 * @param lastName
-	 */
-	public Customer(Integer number, String firstName, String lastName) {
-		this.number = number;
-                this.firstName = firstName;
-                this.lastName = lastName;
-                this.account = new ArrayList();
-                        
-	}
+    /**
+     * 
+     * @param number
+     * @param firstName
+     * @param lastName
+     */
+    public Customer(Integer number, String firstName, String lastName) {
+        this.number = number;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.accounts = new ArrayList();
 
-	/**
-	 * 
-	 * @param number
-	 */
-	public Account getAccountByNumber(String number) {
-                ArrayList<Account> parcours = (ArrayList<Account>) this.account;
-                Account cible = null;
-                Integer i = 0;
-		while (cible == null & i < account.size()){
-                    if (parcours.get(i).getNumber().equals(number)){
-                        cible = parcours.get(i);
-                    }
+    }
+
+    /**
+     * 
+     * @param number
+     */
+    public Account getAccountByNumber(String number) {
+        ArrayList<Account> parcours = (ArrayList<Account>) this.accounts;
+        Account cible = null;
+        Integer i = 0;
+        while (cible == null & i < accounts.size()){
+            if (parcours.get(i).getNumber().equals(number)){
+                cible = parcours.get(i);
+            }
         }
-            return cible;
-        
-	}
+        return cible;
 
-	/**
-	 * 
-	 * @param number
-	 * @param name
-	 * @param rate
-	 */
-	public void addAccount(String number, String name, double rate) {
-		Account nouveau = new Account(number, name, rate, this);
-                this.account.add(nouveau);
-	}
+    }
 
-	public int getNumber() {
-		return this.number;
-	}
+    /**
+     * 
+     * @param number
+     * @param name
+     * @param rate
+     */
+    public void addAccount(String number, String name, double rate) {
+        Account nouveau = new Account(number, name, rate, this);
+        this.accounts.add(nouveau);
+    }
 
-	/**
-	 * 
-	 * @param number
-	 */
-	public void setNumber(int number) {
-		this.number = number;
-	}
+    public int getNumber() {
+        return this.number;
+    }
 
-	public String getFirstName() {
-		return this.firstName;
-	}
+    /**
+     * 
+     * @param number
+     */
+    public void setNumber(int number) {
+            this.number = number;
+    }
 
-	/**
-	 * 
-	 * @param firstName
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public String getFirstName() {
+            return this.firstName;
+    }
 
-	public String getLastName() {
-		return this.lastName;
-	}
+    /**
+     * 
+     * @param firstName
+     */
+    public void setFirstName(String firstName) {
+            this.firstName = firstName;
+    }
 
-	/**
-	 * 
-	 * @param lastName
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-        
+    public String getLastName() {
+            return this.lastName;
+    }
+
+    /**
+     * 
+     * @param lastName
+     */
+    public void setLastName(String lastName) {
+            this.lastName = lastName;
+    }
+
+    public Collection<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Collection<Account> account) {
+        this.accounts = account;
+    }    
 
 }
