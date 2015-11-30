@@ -6,13 +6,13 @@
     xmlns:f="http://java.sun.com/jsf/core">
     <f:view>
         <h:head>
-            <title>#{resrc['index.welcome']}</title>
+            <title>#{resrc['IndexWelcome']}</title>
         </h:head>
         <h:body>
             <h:form>
-                <h3><h:outputText value="#{resrc['index.welcome']}" /></h3>
+                <h3><h:outputText value="#{resrc['IndexWelcome']}" /></h3>
                 <h:panelGrid columns="2"> 
-                    #{resrc['index.language']} : 
+                    #{resrc['IndexLanguage']} : 
                     <h:selectOneMenu onchange="submit()" valueChangeListener="#{LangBean.langChange}">
                         <f:selectItem itemValue="1" itemLabel="FR"/>
                         <f:selectItem itemValue="2" itemLabel="EN"/>
@@ -21,7 +21,7 @@
             </h:form>
             <h:form>       
                 <h:commandLink action="customersList">
-                    <h:outputText value="#{resrc['customersList.title']}"></h:outputText>
+                    <h:outputText value="#{resrc['CustomersListTitle']}"></h:outputText>
                 </h:commandLink>
             </h:form>
         </h:body>
