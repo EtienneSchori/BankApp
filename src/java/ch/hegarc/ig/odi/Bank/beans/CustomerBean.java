@@ -39,7 +39,9 @@ public class CustomerBean implements Serializable {
     public String getFirstName() {
         return firstName;
     }
-
+    
+    // permet d'ajouter le client dans la bank et grace au retour du String Create. 
+    // Nous allons pouvoir nous diriger vers la page NewCustomerSucces
     public String create() {
         services.saveCustomer(this.number, this.firstName, this.lastName);
         return "Create";
