@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <f:view>
+        <head>
+            <title>#{resrc['NewCustomerSuccesTitle']}</title>
+        </head>
+        <body>
+            #{resrc['NewCustomerSuccesTitle']}
+            <br />
+            <h:form>
+                <h:commandLink action="customersList">
+                    <h:outputText value="#{resrc['CustomersListBack']}"></h:outputText>
+                </h:commandLink>  
+            </h:form>
+        </body>
+    </f:view>
+</html>
