@@ -6,6 +6,7 @@
 package ch.hegarc.ig.odi.Bank.business;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -15,7 +16,7 @@ public class Bank {
     private int number;
     private String name;
     private List<Account> accounts;
-    private List<Customer> customers;
+    Map<Integer, Customer> customers;
 
     public Bank(int number, String name) {
         this.number = number;
@@ -61,21 +62,24 @@ public class Bank {
         return cible;
     }
     
-    public void addCustomer(int number, String fn, String ln){
+    public Customer addCustomer(int number, String fn, String ln){
         Customer customer = null;
         
         customer.setFirstName(fn);
         customer.setNumber(number);
         customer.setLastName(ln);
         
-        customers.add(customer);
+        
+        return customer;
     }
     
-    public void addAccount(String number, String name, double rate, Customer customer){
-        for(Customer cus : customers){
-            if(cus.getNumber() == customer.getNumber()){
-                cus.addAccount(number, name, rate);
-            } 
+    public void addAccount(String number, String name, double rate, Customer customer) {
+        if (customers.containsValue(customer)) {
+            accounts.add(new Account(number, name, rate, customer));
         }
+    }
+    
+    public Map<Integer, Customer> getCustomers() {
+        return this.customers;
     }
 }
