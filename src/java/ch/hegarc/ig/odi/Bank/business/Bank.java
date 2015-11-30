@@ -38,31 +38,27 @@ public class Bank {
         this.name = name;
     }
     
-    public Account getAccountByNumber(String Number){
-        int cusNumber;
-
-        Account account = null;
-        
-        for(Customer cus : customers){
-           cusNumber = cus.getNumber();
-           if(cusNumber == number){
-               account = cus.getAccountByNumber(Number);
-           }
-        }
-        return account;
-    }
-    
-    public Customer getCustomerByNumber(int number){
-        int cusNumber;
-        Customer customer = null;
-        
-        for(Customer cus : customers){
-            cusNumber = cus.getNumber();
-            if(cusNumber == number){
-                customer = cus;
+    public Account getAccountByNumber(String number){
+        Account cible = null;
+        Integer i = 0;
+        while (cible == null & i < accounts.size()) {
+            if (accounts.get(i).getNumber().equals(number)) {
+                cible = accounts.get(i);
             }
         }
-        return customer;
+        return cible;
+        
+    }
+    
+    public Customer getCustomerByNumber (int number){
+        Customer cible = null;
+        Integer i = 0;
+        while (cible == null & i < customers.size()) {
+            if (customers.get(i).getNumber()==number) {
+                cible = customers.get(i);
+            }
+        }
+        return cible;
     }
     
     public void addCustomer(int number, String fn, String ln){
