@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <f:view>
+        <head>
+            <title>#{resrc['CustomersListTitle']}</title>
+        </head>
+        <body>
+            <h1>#{resrc['CustomersListTitle']}</h1>
+            <h:form>
+                <h:outputText value="#{resrc['CustomersListEmpty']}" rendered="#{empty ListBean.customers}" />
+                <h:dataTable id="customersList" value="#{ListBean.customers}" var="customer" rendered="#{not empty ListBean.customers}">
+                    <h:column>
+                        <f:facet name="header">#{resrc['NewCustomerNumber']}</f:facet>
+                            #{customer.number}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{resrc['NewCustomerFirstName']}</f:facet>
+                            #{customer.firstName}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{resrc['NewCustomerLastName']}</f:facet>
+                            #{customer.lastName}
+                    </h:column>
+                    <h:column>
+                        <h:commandLink action="#{ListBean.customerDetails(customer)}">
+                            <h:outputText value="#{resrc['CustomersListCustomerDetails']}"/>
+                        </h:commandLink>
+                    </h:column>
+                </h:dataTable>
+                <br />
+                <h:commandButton value='#{resrc["CustomersListCreateCustomer"]}' action="NewCustomer" />
+            </h:form>
+            <br />
+            <h:form>
+                <h:commandLink action="index">
+                    <h:outputText value="#{resrc['IndexBack']}"></h:outputText>
+                </h:commandLink>
+            </h:form>
+        </body>
+    </f:view>
+</html>
