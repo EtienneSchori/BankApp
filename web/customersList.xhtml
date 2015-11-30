@@ -25,9 +25,7 @@
                             #{customer.lastName}
                     </h:column>
                     <h:column>
-                        <h:commandLink action="#{ListBean.Details(customer)}">
-                            <h:outputText value="#{resrc['CustomersListCustomerDetails']}"/>
-                        </h:commandLink>
+                        <h:commandButton action="#{ListBean.Details(customer)}" value="#{resrc['CustomersListCustomerDetails']}"/>
                     </h:column>
                 </h:dataTable>
                 <br />
@@ -35,9 +33,7 @@
             </h:form>
             <br />
             <h:form>
-                <h:commandLink action="index">
-                    <h:outputText value="#{resrc['IndexBack']}"></h:outputText>
-                </h:commandLink>
+                <h:commandButton action="index" value="#{resrc['IndexBack']}"/>
             </h:form>
         </body>
     </f:view>

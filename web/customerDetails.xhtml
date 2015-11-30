@@ -50,18 +50,14 @@
                         #{account.rate}
                 </h:column>
                 <h:column>
-                    <h:commandLink action="#{DetailsBean.accountDetails(account)}">
-                        <h:outputText value="#{resrc['CustomerDetailsAccountDetails']}"/>
-                    </h:commandLink>
+                    <h:commandButton action="#{DetailsBean.accountDetails(account)}" value="#{resrc['CustomerDetailsAccountDetails']}"/>
                 </h:column>
             </h:dataTable>
         </h:form>
         
         <br />
         <h:form>
-            <h:commandLink action="customersList">
-                <h:outputText value="#{resrc['CustomersListBack']}"></h:outputText>
-            </h:commandLink>
+            <h:commandButton action="home" value="#{resrc['IndexBack']}" />
         </h:form>
     </f:view>
 </html>
