@@ -35,7 +35,9 @@
             </h:form>
             <br />
             <h:form>
-                <h:commandButton value="#{resrc['IndexBack']}" action="index" />
+                <h:commandLink action="index">
+                    <h:outputText value="#{resrc['IndexBack']}"></h:outputText>
+                </h:commandLink>
             </h:form>
         </body>
     </f:view>
